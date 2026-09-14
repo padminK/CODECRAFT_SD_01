@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: './', // enables GitHub Pages and static hosting
   server: {
     host: true, // listens on all local IPs (0.0.0.0 and ::)
     port: 5173,
