@@ -4,8 +4,8 @@ const validateLead = (req, res, next) => {
     const errors = {};
 
     // 1. Name validation
-    if (!name || typeof name !== "string" || name.trim().length < 2) {
-        errors.name = "Name is required and must be at least 2 characters.";
+    if (!name || typeof name !== "string" || name.trim().length < 2 || name.trim().length > 30) {
+        errors.name = "Name is required and must be at least 2 characters and less than 30 characters.";
     }
 
     // 2. Mobile number validation (standard 10-digit number or with optional country code)
