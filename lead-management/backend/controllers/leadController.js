@@ -11,7 +11,7 @@ const createLead = async (req, res) => {
             requirement
         } = req.body;
 
-        if (!name || !mobileNumber || !email || !company || !requirement) {
+        if (!name || !mobileNumber || !email || !requirement) {
             return res.status(400).json({ message: "Please enter all required fields" });
         }
 

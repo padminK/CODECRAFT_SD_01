@@ -84,7 +84,8 @@ function LeadForm() {
         setLoading(true);
 
         try {
-            const response = await fetch("http://localhost:5000/api/leads", {
+            const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api/leads";
+            const response = await fetch(apiUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -115,7 +116,11 @@ function LeadForm() {
             });
         } catch (error) {
             setIsSuccess(false);
-            setMessage(error.message);
+            if (error.message === "Failed to fetch" || error.name === "TypeError") {
+                setMessage("Unable to connect to the backend server. Please make sure the backend is running on http://localhost:5000.");
+            } else {
+                setMessage(error.message);
+            }
         } finally {
             setLoading(false);
         }
