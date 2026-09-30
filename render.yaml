@@ -19,4 +19,4 @@ databases:
   - name: slotbooking-db
     plan: free
     databaseName: slotbooking
-    user: postgres
+    user: slotbooking_user
