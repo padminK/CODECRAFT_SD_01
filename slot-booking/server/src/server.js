@@ -34,11 +34,11 @@ const clientDistPath = path.resolve(__dirname, '../../client/dist');
 if (fs.existsSync(clientDistPath)) {
   app.use(express.static(clientDistPath));
 
-  app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api') || req.path === '/health') {
-      return next();
+  app.use((req, res, next) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api') && req.path !== '/health') {
+      return res.sendFile(path.join(clientDistPath, 'index.html'));
     }
-    res.sendFile(path.join(clientDistPath, 'index.html'));
+    next();
   });
 } else {
   app.get('/', (req, res) => {

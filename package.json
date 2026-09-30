@@ -2,12 +2,15 @@
   "name": "slot-booking-system",
   "version": "1.0.0",
   "description": "Full Stack Slot Booking System with React and PostgreSQL",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "install:server": "cd slot-booking/server && npm install",
-    "install:client": "cd slot-booking/client && npm install",
-    "install:all": "npm run install:server && npm run install:client",
-    "build": "cd slot-booking/client && npm install && npm run build && cd ../server && npm install",
-    "start": "node slot-booking/server/src/server.js",
+    "install:all": "npm --prefix slot-booking/client install --include=dev && npm --prefix slot-booking/server install",
+    "build": "npm --prefix slot-booking/client install --include=dev && npm --prefix slot-booking/client run build && npm --prefix slot-booking/server install",
+    "start": "node server.js",
+    "dev": "npm run dev:server",
     "dev:server": "cd slot-booking/server && npm run dev",
     "dev:client": "cd slot-booking/client && npm run dev"
   },
