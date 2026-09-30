@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: slot-booking-app
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: slotbooking-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: slotbooking-db
+    plan: free
+    databaseName: slotbooking
+    user: postgres
