@@ -1,20 +1,8 @@
-# Node dependencies
 node_modules/
-npm-debug.log*
-
-# Environment variables
 .env
-.env.local
-.env.*.local
-
-# Build output
 dist/
 dist-ssr/
-
-# IDE files
-.vscode/
+*.log
+.DS_Store
 .idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+.vscode/
